@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Librerías PNL para Chatbots</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: linear-gradient(45deg, #000000 0%, #1a0000 25%, #ff0000 50%, #1a0000 75%, #000000 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+            padding: 3rem 2rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(255, 0, 0, 0.5);
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .header h1 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            color: #ff9999;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .category {
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #1a0000 0%, #000000 100%);
+            border: 2px solid #ff0000;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .category:hover {
+            box-shadow: 0 0 40px rgba(255, 0, 0, 0.6);
+            transform: translateY(-5px);
+        }
+
+        .category-title {
+            font-size: 1.8rem;
+            color: #ff3333;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid #ff0000;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .category-icon {
+            font-size: 2rem;
+        }
+
+        .library-list {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .library-item {
+            background: rgba(255, 0, 0, 0.05);
+            border-left: 4px solid #ff0000;
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .library-item:hover {
+            background: rgba(255, 0, 0, 0.1);
+            border-left-color: #ff3333;
+            transform: translateX(10px);
+        }
+
+        .library-name {
+            font-size: 1.3rem;
+            color: #ff6666;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .library-description {
+            color: #cccccc;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .library-features {
+            margin-top: 0.75rem;
+            padding-left: 1.5rem;
+            color: #999999;
+            font-size: 0.9rem;
+        }
+
+        .library-features li {
+            margin: 0.3rem 0;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin: 2rem auto;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+        }
+
+        .back-button:hover {
+            background: linear-gradient(135deg, #ff3333 0%, #ff0000 100%);
+            box-shadow: 0 6px 25px rgba(255, 0, 0, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem 1rem;
+            }
+
+            .category {
+                padding: 1.5rem;
+            }
+
+            .category-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>📚 Librerías PNL para Chatbots</h1>
+        <p>Clasificación completa de herramientas para desarrollo de chatbots</p>
+    </header>
+
+    <div class="container">
+        <section class="category">
+            <h2 class="category-title">
+                <span class="category-icon">🤖</span>
+                Chatbot con PNL (Procesamiento de Lenguaje Natural)
+            </h2>
+            <div class="library-list">
+                <div class="library-item">
+                    <div class="library-name">NLTK (Natural Language Toolkit)</div>
+                    <div class="library-description">
+                        Biblioteca fundamental para procesamiento de lenguaje natural en Python. Ideal para tokenización, stemming, lematización y análisis gramatical.
+                    </div>
+                    <ul class="library-features">
+                        <li>Tokenización de palabras y oraciones</li>
+                        <li>Análisis de sentimientos básico</li>
+                        <li>Etiquetado gramatical (POS tagging)</li>
+                    </ul>
+                </div>
+
+                <div class="library-item">
+                    <div class="library-name">spaCy</div>
+                    <div class="library-description">
+                        Framework de PNL industrial con modelos preentrenados. Rápido y eficiente para análisis de texto en producción.
+                    </div>
+                    <ul class="library-features">
+                        <li>Reconocimiento de entidades nombradas (NER)</li>
+                        <li>Análisis sintáctico avanzado</li>
+                        <li>Soporte multiidioma</li>
+                    </ul>
+                </div>
+
+                <div class="library-item">
+                    <div class="library-name">TextBlob</div>
+                    <div class="library-description">
+                        Interfaz simple para tareas comunes de PNL. Perfecta para principiantes en procesamiento de lenguaje natural.
+                    </div>
+                    <ul class="library-features">
+                        <li>Análisis de sentimientos simplificado</li>
+                        <li>Corrección ortográfica</li>
+                        <li>Traducción básica</li>
+                    </ul>
+                </div>
+
+                <div class="library-item">
+                    <div class="library-name">Rasa</div>
+                    <div class="library-description">
+                        Framework completo para construir chatbots conversacionales con comprensión contextual y gestión de diálogos.
+                    </div>
+                    <ul class="library-features">
+                        <li>Comprensión de intenciones y entidades</li>
+                        <li>Gestión de contexto conversacional</li>
+                        <li>Entrenamiento de modelos personalizados</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="category">
+            <h2 class="category-title">
+                <span class="category-icon">🧠</span>
+                Chatbot con IA (Inteligencia Artificial)
+            </h2>
+            <div class="library-list">
+                <div class="library-item">
+                    <div class="library-name">OpenAI GPT API</div>
+                    <div class="library-description">
+                        API de modelos de lenguaje avanzados (GPT-3.5, GPT-4) para crear chatbots con capacidades conversacionales excepcionales.
+                    </div>
+                    <ul class="library-features">
+                        <li>Comprensión contextual profunda</li>
+                        <li>Generación de respuestas naturales</li>
+                        <li>Múltiples casos de uso</li>
+                    </ul>
+                </div>
+
+                <div class="library-item">
+                    <div class="library-name">Anthropic Claude API</div>
+                    <div class="library-description">
+                        Modelo de IA conversacional con énfasis en seguridad y respuestas útiles y precisas.
+                    </div>
+                    <ul class="library-features">
+                        <li>Conversaciones largas y coherentes</li>
+                        <li>Análisis de documentos</li>
+                        <li>Respuestas éticas y seguras</li>
+                    </ul>
+                </div>
+
+                <div class="library-item">
+                    <div class="library-name">Hugging Face Transformers</div>
+                    <div class="library-description">
+                        Biblioteca para usar modelos transformer preentrenados como BERT, GPT-2, RoBERTa y más.
+                    </div>
+                    <ul class="library-features">
+                        <li>Acceso a miles de modelos preentrenados</li>
+                        <li>Fine-tuning personalizado</li>
+                        <li>Soporte para múltiples tareas de NLP</li>
+                    </ul>
+                </div>
+
+                <div class="library-item">
+                    <div class="library-name">TensorFlow / PyTorch</div>
+                    <div class="library-description">
+                        Frameworks de deep learning para entrenar modelos de chatbot personalizados desde cero.
+                    </div>
+                    <ul class="library-features">
+                        <li>Construcción de arquitecturas personalizadas</li>
+                        <li>Entrenamiento con datos propios</li>
+                        <li>Control total sobre el modelo</li>
+                    </ul>
+                </div>
+
+                <div class="library-item">
+                    <div class="library-name">DialogFlow (Google)</div>
+                    <div class="library-description">
+                        Plataforma de IA conversacional de Google con comprensión de lenguaje natural integrada.
+                    </div>
+                    <ul class="library-features">
+                        <li>Entrenamiento visual de intenciones</li>
+                        <li>Integración con servicios de Google</li>
+                        <li>Análisis de sentimientos</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="category">
+            <h2 class="category-title">
+                <span class="category-icon">📱</span>
+                Chatbot conectados a plataformas (WhatsApp, Telegram, etc.)
+            </h2>
+            <div class="library-list">
+                <div class="library-item">
+                    <div class="library-name">Twilio API</div>
+                    <div class="library-description">
+                        API para integrar chatbots con WhatsApp, SMS y otros canales de mensajería.
+                    </div>
+                    <ul class="library-features">
+                        <li>WhatsApp Business API</li>
+                        <li>SMS y llamadas telefónicas</li>
+                        <li>Mensajería programable</li>
+                    </ul>
+                </div>
+
+                <div class="library-item">
+                    <div class="library-name">python-telegram-bot</div>
+                    <div class="library-description">
+                        Wrapper en Python para la API de Telegram Bot. Facilita la creación de bots para Telegram.
+                    </div>
+                    <ul class="library-features">
+                        <li>Manejo de mensajes y comandos</li>
+                        <li>Teclados interactivos</li>
+                        <li>Soporte para multimedia</li>
+                    </ul>
+                </div>
+
+                <div class="library-item">
+                    <div class="library-name">WhatsApp Business API</div>
+                    <div class="library-description">
+                        API oficial de WhatsApp para empresas que permite automatizar conversaciones.
+                    </div>
+                    <ul class="library-features">
+                        <li>Mensajes automáticos</li>
+                        <li>Plantillas aprobadas</li>
+                        <li>Notificaciones transaccionales</li>
+                    </ul>
+                </div>
+
+                <div class="library-item">
+                    <div class="library-name">Facebook Messenger API</div>
+                    <div class="library-description">
+                        Plataforma para crear bots que interactúan en Facebook Messenger.
+                    </div>
+                    <ul class="library-features">
+                        <li>Respuestas rápidas y botones</li>
+                        <li>Integración con páginas de Facebook</li>
+                        <li>Plantillas de mensajes estructurados</li>
+                    </ul>
+                </div>
+
+                <div class="library-item">
+                    <div class="library-name">Slack SDK</div>
+                    <div class="library-description">
+                        Kit de desarrollo para crear bots en Slack para equipos y empresas.
+                    </div>
+                    <ul class="library-features">
+                        <li>Comandos slash</li>
+                        <li>Mensajes interactivos</li>
+                        <li>Integración con workflows</li>
+                    </ul>
+                </div>
+
+                <div class="library-item">
+                    <div class="library-name">Discord.py</div>
+                    <div class="library-description">
+                        Biblioteca para crear bots de Discord con Python.
+                    </div>
+                    <ul class="library-features">
+                        <li>Comandos y eventos</li>
+                        <li>Gestión de servidores</li>
+                        <li>Soporte para voz</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="category">
+            <h2 class="category-title">
+                <span class="category-icon">🌐</span>
+                Chatbot en páginas web
+            </h2>
+            <div class="library-list">
+                <div class="library-item">
+                    <div class="library-name">Botpress</div>
+                    <div class="library-description">
+                        Plataforma open-source para construir y desplegar chatbots en sitios web con interfaz visual.
+                    </div>
+                    <ul class="library-features">
+                        <li>Editor visual de flujos</li>
+                        <li>Widget de chat embebible</li>
+                        <li>Analytics y métricas</li>
+                    </ul>
+                </div>
+
+                <div class="library-item">
+                    <div class="library-name">Socket.IO</div>
+                    <div class="library-description">
+                        Biblioteca para comunicación en tiempo real entre cliente y servidor, ideal para chats web.
+                    </div>
+                    <ul class="library-features">
+                        <li>Comunicación bidireccional</li>
+                        <li>Eventos en tiempo real</li>
+                        <li>Reconexión automática</li>
+                    </ul>
+                </div>
+
+                <div class="library-item">
+                    <div class="library-name">Landbot</div>
+                    <div class="library-description">
+                        Plataforma no-code para crear chatbots conversacionales embebidos en sitios web.
+                    </div>
+                    <ul class="library-features">
+                        <li>Constructor visual drag-and-drop</li>
+                        <li>Integración con CRM y herramientas</li>
+                        <li>Diseños personalizables</li>
+                    </ul>
+                </div>
+
+                <div class="library-item">
+                    <div class="library-name">Tawk.to</div>
+                    <div class="library-description">
+                        Widget de chat en vivo gratuito con capacidades de chatbot automatizado.
+                    </div>
+                    <ul class="library-features">
+                        <li>Chat en vivo y automatizado</li>
+                        <li>Fácil instalación</li>
+                        <li>Monitoreo de visitantes</li>
+                    </ul>
+                </div>
+
+                <div class="library-item">
+                    <div class="library-name">React Chatbot Kit</div>
+                    <div class="library-description">
+                        Framework para construir chatbots personalizados en aplicaciones React.
+                    </div>
+                    <ul class="library-features">
+                        <li>Componentes React reutilizables</li>
+                        <li>Gestión de estado del chat</li>
+                        <li>Personalización completa de UI</li>
+                    </ul>
+                </div>
+
+                <div class="library-item">
+                    <div class="library-name">Kommunicate</div>
+                    <div class="library-description">
+                        Plataforma para agregar chatbots y chat en vivo a sitios web y aplicaciones móviles.
+                    </div>
+                    <ul class="library-features">
+                        <li>Bot + humano híbrido</li>
+                        <li>Integración con múltiples canales</li>
+                        <li>Dashboard de gestión</li>
+                    </ul>
+                </div>
+
+                <div class="library-item">
+                    <div class="library-name">WebSocket API</div>
+                    <div class="library-description">
+                        Protocolo estándar para comunicación en tiempo real, base para implementar chats personalizados.
+                    </div>
+                    <ul class="library-features">
+                        <li>Conexión persistente</li>
+                        <li>Baja latencia</li>
+                        <li>Soporte nativo en navegadores</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="button-container">
+            <a href="#" class="back-button" onclick="history.back(); return false;">← Volver al Catálogo</a>
+        </div>
+    </div>
+</body>
+</html>
