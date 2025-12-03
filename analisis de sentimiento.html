@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proyecto - Visión Artificial</title>
+    <title>Librerías de Traducción en Python</title>
     <style>
         * {
             margin: 0;
@@ -13,114 +13,39 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f5f5f5;
-            color: #333;
+            background: #0a0a0a;
+            color: #ffffff;
+            line-height: 1.6;
+            min-height: 100vh;
         }
 
         .header {
-            min-height: 40vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(135deg, #1a0a0f 0%, #4a0e1f 25%, #8b1538 50%, #4a0e1f 75%, #1a0a0f 100%);
-            color: white;
-            padding: 2rem;
+            background: linear-gradient(45deg, #000000 0%, #1a0000 25%, #ff0000 50%, #1a0000 75%, #000000 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+            padding: 3rem 2rem;
             text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(255, 0, 51, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 50%, rgba(139, 21, 56, 0.2) 0%, transparent 50%);
-            animation: pulse 4s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
-        }
-
-        .header h1 {
-            font-size: clamp(2rem, 6vw, 3.5rem);
-            font-weight: 700;
-            margin-bottom: 1rem;
-            letter-spacing: 3px;
-            position: relative;
-            z-index: 1;
-            background: linear-gradient(
-                90deg,
-                #ff0033 0%,
-                #ff3366 15%,
-                #cc0033 30%,
-                #8b1538 45%,
-                #ff0033 60%,
-                #ff6699 75%,
-                #cc0033 90%,
-                #ff0033 100%
-            );
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            filter: drop-shadow(0 0 15px rgba(255, 0, 51, 0.8))
-                    drop-shadow(0 0 30px rgba(255, 0, 51, 0.6))
-                    drop-shadow(0 0 45px rgba(139, 21, 56, 0.5));
-            animation: neonGlow 3s ease-in-out infinite alternate,
-                       gradientShift 4s linear infinite;
-        }
-
-        @keyframes neonGlow {
-            from {
-                filter: drop-shadow(0 0 15px rgba(255, 0, 51, 0.8))
-                        drop-shadow(0 0 30px rgba(255, 0, 51, 0.6))
-                        drop-shadow(0 0 45px rgba(139, 21, 56, 0.5))
-                        drop-shadow(0 0 60px rgba(255, 0, 51, 0.3));
-            }
-            to {
-                filter: drop-shadow(0 0 25px rgba(255, 0, 51, 1))
-                        drop-shadow(0 0 45px rgba(255, 0, 51, 0.8))
-                        drop-shadow(0 0 65px rgba(139, 21, 56, 0.7))
-                        drop-shadow(0 0 90px rgba(255, 0, 51, 0.5));
-            }
+            box-shadow: 0 4px 20px rgba(255, 0, 0, 0.5);
         }
 
         @keyframes gradientShift {
-            0% {
-                background-position: 0% center;
-            }
-            100% {
-                background-position: 200% center;
-            }
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
-        .back-button {
-            position: absolute;
-            top: 2rem;
-            left: 2rem;
-            background: rgba(255, 51, 102, 0.2);
-            color: #ffccdd;
-            padding: 0.8rem 1.5rem;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 51, 102, 0.3);
-            z-index: 10;
+        .header h1 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+            margin-bottom: 0.5rem;
         }
 
-        .back-button:hover {
-            background: rgba(255, 51, 102, 0.4);
-            border-color: rgba(255, 51, 102, 0.6);
-            box-shadow: 0 0 20px rgba(255, 0, 51, 0.3);
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            color: #ff9999;
         }
 
         .container {
@@ -129,94 +54,103 @@
             padding: 3rem 2rem;
         }
 
-        .section {
-            background: white;
-            border-radius: 8px;
+        .category {
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #1a0000 0%, #000000 100%);
+            border: 2px solid #ff0000;
+            border-radius: 12px;
             padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+            transition: all 0.3s ease;
         }
 
-        .section h2 {
+        .category:hover {
+            box-shadow: 0 0 40px rgba(255, 0, 0, 0.6);
+            transform: translateY(-5px);
+        }
+
+        .category-title {
             font-size: 1.8rem;
-            font-weight: 400;
+            color: #ff3333;
             margin-bottom: 1.5rem;
-            color: #8b1538;
-            border-bottom: 2px solid #ff3366;
-            padding-bottom: 0.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid #ff0000;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
 
-        .code-block {
-            background: #1e1e1e;
-            color: #d4d4d4;
-            padding: 1.5rem;
-            border-radius: 5px;
-            overflow-x: auto;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
-            line-height: 1.6;
-            border-left: 4px solid #8b1538;
+        .category-icon {
+            font-size: 2rem;
         }
 
-        .code-block code {
-            display: block;
-            white-space: pre;
-        }
-
-        .keyword {
-            color: #569cd6;
-        }
-
-        .string {
-            color: #ce9178;
-        }
-
-        .comment {
-            color: #6a9955;
-        }
-
-        .function {
-            color: #dcdcaa;
-        }
-
-        .glosario-grid {
+        .library-list {
             display: grid;
             gap: 1.5rem;
         }
 
-        .glosario-item {
-            background: #fafafa;
+        .library-item {
+            background: rgba(255, 0, 0, 0.05);
+            border-left: 4px solid #ff0000;
             padding: 1.5rem;
-            border-radius: 5px;
-            border-left: 4px solid #8b1538;
+            border-radius: 8px;
             transition: all 0.3s ease;
         }
 
-        .glosario-item:hover {
-            background: #fff;
-            box-shadow: 0 4px 12px rgba(139, 21, 56, 0.1);
-            transform: translateX(5px);
+        .library-item:hover {
+            background: rgba(255, 0, 0, 0.1);
+            border-left-color: #ff3333;
+            transform: translateX(10px);
         }
 
-        .glosario-item h3 {
-            font-size: 1.2rem;
+        .library-name {
+            font-size: 1.3rem;
+            color: #ff6666;
             font-weight: 500;
-            color: #8b1538;
             margin-bottom: 0.5rem;
-            font-family: 'Courier New', monospace;
         }
 
-        .glosario-item p {
-            color: #666;
+        .library-description {
+            color: #cccccc;
+            font-size: 1rem;
             line-height: 1.6;
-            margin-bottom: 0.5rem;
         }
 
-        .glosario-item .parametros {
-            font-size: 0.85rem;
-            color: #888;
-            font-style: italic;
-            margin-top: 0.5rem;
+        .library-features {
+            margin-top: 0.75rem;
+            padding-left: 1.5rem;
+            color: #999999;
+            font-size: 0.9rem;
+        }
+
+        .library-features li {
+            margin: 0.3rem 0;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin: 2rem auto;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+        }
+
+        .back-button:hover {
+            background: linear-gradient(135deg, #ff3333 0%, #ff0000 100%);
+            box-shadow: 0 6px 25px rgba(255, 0, 0, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 3rem;
         }
 
         @media (max-width: 768px) {
@@ -224,85 +158,294 @@
                 padding: 2rem 1rem;
             }
 
-            .section {
+            .category {
                 padding: 1.5rem;
             }
 
-            .back-button {
-                top: 1rem;
-                left: 1rem;
-                padding: 0.6rem 1rem;
-                font-size: 0.85rem;
-            }
-
-            .code-block {
-                font-size: 0.8rem;
-                padding: 1rem;
+            .category-title {
+                font-size: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
     <header class="header">
-        <a href="index.html" class="back-button">← Volver al inicio</a>
-        <h1>analisis de sentimiento</h1>
+        <h1>🌐 Librerías de Traducción en Python</h1>
+        <p>Herramientas para procesamiento de lenguaje, tokenización y traducción</p>
     </header>
 
     <div class="container">
-        <section class="section">
-            <h2>📝 Código del Proyecto</h2>
-            <div class="code-block">
-                <code>palabraspositivas=["feliz","bonito","contento","alegre","maravilloso"]
-palabrasnegativas=["triste","solo","aburrido","deprimido","malo","murio"]
+        <section class="category">
+            <h2 class="category-title">
+                <span class="category-icon">🌍</span>
+                Servicios de Traducción API
+            </h2>
+            <div class="library-list">
+                <div class="library-item">
+                    <div class="library-name">googletrans</div>
+                    <div class="library-description">
+                        Librería de Python que implementa Google Translate API de forma gratuita. Permite traducir texto entre más de 100 idiomas utilizando el motor de traducción de Google.
+                    </div>
+                    <ul class="library-features">
+                        <li>Traducción gratuita sin API key</li>
+                        <li>Detección automática de idioma</li>
+                        <li>Soporte para más de 100 idiomas</li>
+                        <li>Traducción de texto, frases y documentos</li>
+                    </ul>
+                </div>
 
-frase=("feliz ,bonito, solo")
-tokens=frase.replace('.','').replace(',','').replace(".","").lower().split()
-positivas=0
-negativas=0
+                <div class="library-item">
+                    <div class="library-name">google-cloud-translate</div>
+                    <div class="library-description">
+                        Cliente oficial de Google Cloud Translation API. Servicio profesional de traducción automática con soporte para traducción avanzada y neural.
+                    </div>
+                    <ul class="library-features">
+                        <li>Traducción neural de alta calidad</li>
+                        <li>Detección de idioma precisa</li>
+                        <li>Traducción de documentos completos</li>
+                        <li>Glosarios personalizables</li>
+                    </ul>
+                </div>
 
-for palabra in tokens:
-    if palabra in palabraspositivas:
-        positivas+=1
-    elif palabra in palabrasnegativas:
-        negativas+=1
+                <div class="library-item">
+                    <div class="library-name">deep-translator</div>
+                    <div class="library-description">
+                        Librería flexible que integra múltiples servicios de traducción como Google, Microsoft, DeepL y más en una sola interfaz unificada.
+                    </div>
+                    <ul class="library-features">
+                        <li>Múltiples motores de traducción</li>
+                        <li>API consistente y simple</li>
+                        <li>Traducción por lotes</li>
+                        <li>Sin dependencias complejas</li>
+                    </ul>
+                </div>
 
-
-print("palabras positivas",positivas)
-print("palabras negativas",negativas)
-
-if positivas > negativas:
-    print("la frase es positiva")
-else:
-    print("la frase es negativa")</code>
+                <div class="library-item">
+                    <div class="library-name">translate</div>
+                    <div class="library-description">
+                        Librería simple y ligera para traducción automática con soporte para múltiples proveedores de traducción.
+                    </div>
+                    <ul class="library-features">
+                        <li>Interfaz minimalista</li>
+                        <li>Fácil integración</li>
+                        <li>Traducción directa de cadenas</li>
+                        <li>Bajo consumo de recursos</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
-        <section class="section">
-            <h2>📚 Glosario de Funciones</h2>
-            <div class="glosario-grid">
-                <div class="glosario-item">
-                    <h3>cv2.imread()</h3>
-                    <p>Función de OpenCV que lee y carga una imagen desde un archivo en el disco.</p>
-                       <h3>📚 Glosario de Funciones</h3>
+        <section class="category">
+            <h2 class="category-title">
+                <span class="category-icon">📝</span>
+                Procesamiento de Lenguaje Natural (NLP)
+            </h2>
+            <div class="library-list">
+                <div class="library-item">
+                    <div class="library-name">TextBlob</div>
+                    <div class="library-description">
+                        Librería de procesamiento de texto simple y potente construida sobre NLTK. Proporciona una API intuitiva para tareas comunes de NLP incluyendo traducción.
+                    </div>
+                    <ul class="library-features">
+                        <li>Análisis de sentimientos integrado</li>
+                        <li>Traducción automática</li>
+                        <li>Corrección ortográfica</li>
+                        <li>Extracción de sustantivos y frases</li>
+                        <li>Lematización y stemming</li>
+                    </ul>
+                </div>
 
-                <div class="glosario-item">
-                    <h4>replace</h4>
-                    <p>cambia signos de puntuacion por otros.</p>
-                    <h4>split</h4>
-                    <p>convierte una oracion en una lista.</p>
-                    <h4>len</h4>
-                    <p>mide cuantas cosas hay en una lista.</p>
-                    <h4>append</h4>
-                    <p>agrega un objeto a una lista.</p>
+                <div class="library-item">
+                    <div class="library-name">NLTK (Natural Language Toolkit)</div>
+                    <div class="library-description">
+                        Plataforma líder para trabajar con lenguaje humano en Python. Incluye herramientas para tokenización, clasificación, y análisis semántico.
+                    </div>
+                    <ul class="library-features">
+                        <li>Suite completa de herramientas NLP</li>
+                        <li>Más de 50 corpus y recursos léxicos</li>
+                        <li>Clasificadores de texto</li>
+                        <li>Análisis gramatical</li>
+                    </ul>
+                </div>
+
+                <div class="library-item">
+                    <div class="library-name">spaCy</div>
+                    <div class="library-description">
+                        Librería industrial de NLP diseñada específicamente para producción. Ofrece modelos preentrenados rápidos y precisos para múltiples idiomas.
+                    </div>
+                    <ul class="library-features">
+                        <li>Procesamiento ultrarrápido</li>
+                        <li>Modelos preentrenados en 70+ idiomas</li>
+                        <li>Reconocimiento de entidades nombradas</li>
+                        <li>Análisis de dependencias sintácticas</li>
+                    </ul>
+                </div>
+
+                <div class="library-item">
+                    <div class="library-name">polyglot</div>
+                    <div class="library-description">
+                        Librería NLP multilingüe que soporta análisis de texto masivo en más de 130 idiomas con tokenización, detección de idioma y más.
+                    </div>
+                    <ul class="library-features">
+                        <li>Soporte para 130+ idiomas</li>
+                        <li>Detección automática de idioma</li>
+                        <li>Análisis de sentimientos multilingüe</li>
+                        <li>Transliteración</li>
+                    </ul>
                 </div>
             </div>
+        </section>
+
+        <section class="category">
+            <h2 class="category-title">
+                <span class="category-icon">✂️</span>
+                Tokenización y Análisis de Texto
+            </h2>
+            <div class="library-list">
+                <div class="library-item">
+                    <div class="library-name">tokenizers (Hugging Face)</div>
+                    <div class="library-description">
+                        Librería extremadamente rápida de tokenización desarrollada por Hugging Face. Implementa tokenizadores modernos como BPE, WordPiece y Unigram.
+                    </div>
+                    <ul class="library-features">
+                        <li>Velocidad de procesamiento ultra rápida</li>
+                        <li>Tokenizadores preentrenados</li>
+                        <li>Entrenamiento de tokenizadores personalizados</li>
+                        <li>Soporte para modelos Transformer</li>
+                    </ul>
+                </div>
+
+                <div class="library-item">
+                    <div class="library-name">tiktoken</div>
+                    <div class="library-description">
+                        Tokenizador rápido de BPE (Byte Pair Encoding) desarrollado por OpenAI. Optimizado para contar tokens en modelos GPT.
+                    </div>
+                    <ul class="library-features">
+                        <li>Compatible con modelos GPT-3 y GPT-4</li>
+                        <li>Conteo preciso de tokens</li>
+                        <li>Alto rendimiento en Rust</li>
+                        <li>Manejo eficiente de caracteres Unicode</li>
+                    </ul>
+                </div>
+
+                <div class="library-item">
+                    <div class="library-name">sentencepiece</div>
+                    <div class="library-description">
+                        Tokenizador independiente del idioma que no requiere pre-tokenización. Usado en modelos de traducción neuronal y LLMs.
+                    </div>
+                    <ul class="library-features">
+                        <li>Tokenización independiente del idioma</li>
+                        <li>Subword tokenization (BPE, Unigram)</li>
+                        <li>No requiere espacios en blanco</li>
+                        <li>Ideal para idiomas asiáticos</li>
+                    </ul>
+                </div>
+
+                <div class="library-item">
+                    <div class="library-name">wordninja</div>
+                    <div class="library-description">
+                        Librería para segmentar palabras que están concatenadas sin espacios, útil para procesar hashtags, URLs y texto compacto.
+                    </div>
+                    <ul class="library-features">
+                        <li>Separación automática de palabras</li>
+                        <li>Procesamiento de hashtags</li>
+                        <li>Algoritmo probabilístico</li>
+                        <li>Ligero y rápido</li>
+                    </ul>
+                </div>
+
+                <div class="library-item">
+                    <div class="library-name">transformers (Tokenizers)</div>
+                    <div class="library-description">
+                        Módulo de tokenización de la librería Transformers de Hugging Face. Incluye tokenizadores para todos los modelos populares de NLP.
+                    </div>
+                    <ul class="library-features">
+                        <li>Tokenizadores para BERT, GPT, RoBERTa, T5</li>
+                        <li>Auto-tokenización inteligente</li>
+                        <li>Padding y truncamiento automático</li>
+                        <li>Conversión a tensores PyTorch/TensorFlow</li>
+                    </ul>
+                </div>
+
+                <div class="library-item">
+                    <div class="library-name">sacremoses</div>
+                    <div class="library-description">
+                        Implementación en Python de los scripts Moses para pre/post-procesamiento de texto en traducción automática.
+                    </div>
+                    <ul class="library-features">
+                        <li>Tokenización Moses</li>
+                        <li>Normalización de puntuación</li>
+                        <li>Truecasing</li>
+                        <li>Detokenización</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="category">
+            <h2 class="category-title">
+                <span class="category-icon">🔤</span>
+                Detección y Análisis de Idiomas
+            </h2>
+            <div class="library-list">
+                <div class="library-item">
+                    <div class="library-name">langdetect</div>
+                    <div class="library-description">
+                        Puerto de la librería de detección de idiomas de Google. Soporta 55 idiomas con algoritmos probabilísticos precisos.
+                    </div>
+                    <ul class="library-features">
+                        <li>Detección de 55 idiomas</li>
+                        <li>Basado en n-gramas</li>
+                        <li>API simple y directa</li>
+                        <li>Detección probabilística con confianza</li>
+                    </ul>
+                </div>
+
+                <div class="library-item">
+                    <div class="library-name">langid</div>
+                    <div class="library-description">
+                        Identificador de idioma rápido y preciso que soporta 97 idiomas. Optimizado para velocidad y bajo consumo de memoria.
+                    </div>
+                    <ul class="library-features">
+                        <li>97 idiomas soportados</li>
+                        <li>Alta precisión (>99%)</li>
+                        <li>Extremadamente rápido</li>
+                        <li>Entrenamiento personalizable</li>
+                    </ul>
+                </div>
+
+                <div class="library-item">
+                    <div class="library-name">fasttext (Language Identification)</div>
+                    <div class="library-description">
+                        Modelo de Facebook AI para identificación de idioma. Soporta 176 idiomas con detección ultrarrápida y precisa.
+                    </div>
+                    <ul class="library-features">
+                        <li>176 idiomas diferentes</li>
+                        <li>Velocidad de procesamiento excepcional</li>
+                        <li>Modelos preentrenados</li>
+                        <li>Funciona con textos cortos</li>
+                    </ul>
+                </div>
+
+                <div class="library-item">
+                    <div class="library-name">pycountry</div>
+                    <div class="library-description">
+                        Base de datos ISO de países, idiomas, scripts y monedas. Útil para trabajar con códigos de idioma estándar.
+                    </div>
+                    <ul class="library-features">
+                        <li>Códigos ISO 639 de idiomas</li>
+                        <li>Nombres de idiomas en múltiples lenguas</li>
+                        <li>Información de países y regiones</li>
+                        <li>Conversión entre códigos</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="button-container">
+            <a href="#" class="back-button" onclick="history.back(); return false;">← Volver</a>
         </div>
     </div>
 </body>
 </html>
-                </div>
-            </div>
-        </section>
-    </div>
-</body>
-</html>
+
